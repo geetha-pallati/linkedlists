@@ -64,7 +64,7 @@ void deleteNode(struct Node** head, int key) {
     if (curr->next != NULL) {
         curr->next->prev = curr->prev;
     }
-
+    
     // Change prev only if node to be deleted is NOT the first node
     if (curr->prev != NULL) {
         curr->prev->next = curr->next;

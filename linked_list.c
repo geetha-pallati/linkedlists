@@ -10,7 +10,6 @@ Node* create_node(int value){
     n->next = NULL;
     return n;
 
-
 }
 int insert_node_beganing(Node** head, int value){
     Node* n = create_node(value);
@@ -70,9 +69,22 @@ int insert_node_at_position(Node** head, int value, int pos){
         
     }
 
-
-
 }
+int reverse_linked_list(Node** head){
+    Node* prev = NULL;
+    Node* curr = *head;
+    Node* next = NULL;
+    while (curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    *head = prev;
+    
+}   
+
 int remove_node(Node **head, int pos){
     Node *curr = *head, *prev = NULL;
     if( curr == NULL && pos == NULL)
@@ -92,10 +104,8 @@ int remove_node(Node **head, int pos){
     }
     prev->next = curr->next;
     free(curr); 
-
-    
-
 }
+
 void print_link(Node* head){
     Node* curr =  head;
     while(curr != NULL)
