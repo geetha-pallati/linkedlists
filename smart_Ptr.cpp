@@ -21,6 +21,7 @@ int main() {
     // Using std::shared_ptr
     {
         std::shared_ptr<Sample> sp1(new Sample(10));
+        // std::shared_ptr<Sample> sp1 = std::make_shared<Sample>(10); // Preferred way to create shared_ptr
         {
             std::shared_ptr<Sample> sp2 = sp1; // Shared ownership
             sp2->display();
@@ -33,7 +34,8 @@ int main() {
 
     // Using std::unique_ptr
     {
-        std::unique_ptr<Sample> up1(new Sample(20)); //upl function means unique pointer dynamic allocation
+        std::unique_ptr<Sample> up1(new Sample(20)); //upl function means unique pointer dynamic allocation// 
+        //std::unique_ptr<Sample> up1 = std::make_unique<Sample>(20); // Preferred way to create unique_ptr
         up1->display();
         // std::unique_ptr<Sample> up2 = up1; // Error: cannot copy unique_ptr
         std::unique_ptr<Sample> up2 = std::move(up1); // Transfer ownership
@@ -48,6 +50,7 @@ int main() {
     {
         std::shared_ptr<Sample> sp3(new Sample(30));
         std::weak_ptr<Sample> wp1 = sp3; // weak_ptr does not affect reference count
+        // std::weak_ptr<Sample> wp1 = sp3; // Preferred way to create weak_ptr
 
         std::cout << "Use count of sp3: " << sp3.use_count() << std::endl;
 
